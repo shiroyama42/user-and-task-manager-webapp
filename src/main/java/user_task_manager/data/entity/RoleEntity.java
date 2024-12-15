@@ -1,4 +1,4 @@
-package data.entity;
+package user_task_manager.data.entity;
 
 import jakarta.persistence.*;
 

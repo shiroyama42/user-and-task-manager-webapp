@@ -1,4 +1,4 @@
-package data.entity;
+package user_task_manager.data.entity;
 
 
 import jakarta.persistence.*;
@@ -98,6 +98,22 @@ public class UserEntity implements UserDetails {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public RoleEntity getRole() {
+        return role;
+    }
+
+    public void setRole(RoleEntity role) {
+        this.role = role;
+    }
+
+    public DepartmentEntity getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(DepartmentEntity department) {
+        this.department = department;
     }
 
     @Override
