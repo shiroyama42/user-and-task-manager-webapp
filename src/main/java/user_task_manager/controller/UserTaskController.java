@@ -10,7 +10,7 @@ import user_task_manager.data.repository.UserTaskRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usertasks")
+@RequestMapping("/company/usertasks")
 public class UserTaskController {
 
     @Autowired

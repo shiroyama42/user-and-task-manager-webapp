@@ -9,7 +9,7 @@ import user_task_manager.data.repository.TaskRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tasks")
+@RequestMapping("/company/tasks")
 public class TaskController {
     @Autowired
     private TaskRepository taskRepository;

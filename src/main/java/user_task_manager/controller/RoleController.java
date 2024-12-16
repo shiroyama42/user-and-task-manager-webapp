@@ -8,7 +8,7 @@ import user_task_manager.data.repository.RoleRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/roles")
+@RequestMapping("/company/roles")
 public class RoleController {
 
     @Autowired

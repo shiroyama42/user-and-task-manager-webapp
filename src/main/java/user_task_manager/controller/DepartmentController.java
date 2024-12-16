@@ -8,7 +8,7 @@ import user_task_manager.data.repository.DepartmentRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/departments")
+@RequestMapping("/company/departments")
 public class DepartmentController {
 
     @Autowired
