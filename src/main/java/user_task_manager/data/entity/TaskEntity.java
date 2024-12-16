@@ -3,6 +3,7 @@ package user_task_manager.data.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +20,9 @@ public class TaskEntity {
     @Column(name = "task")
     private String task;
 
+    @Column(name = "start_date")
+    private LocalDate startDate;
+
     @Column(name = "end_date")
     private Date endDate;
 
@@ -29,10 +33,11 @@ public class TaskEntity {
     public TaskEntity() {
     }
 
-    public TaskEntity(Date endDate, String task, int id) {
+    public TaskEntity(Date endDate, String task, int id, LocalDate startDate) {
         this.endDate = endDate;
         this.task = task;
         this.id = id;
+        this.startDate = LocalDate.now();
     }
 
     public int getId() {
@@ -57,6 +62,14 @@ public class TaskEntity {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 
     public List<UserEntity> getUsers() {

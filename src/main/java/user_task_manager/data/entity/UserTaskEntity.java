@@ -17,16 +17,12 @@ public class UserTaskEntity {
     @Column(name = "task_id")
     private int taskId;
 
-    @Column(name = "start_date")
-    private Date startDate;
-
     public UserTaskEntity() {
     }
 
-    public UserTaskEntity(int userId, int taskId, Date startDate) {
+    public UserTaskEntity(int userId, int taskId) {
         this.userId = userId;
         this.taskId = taskId;
-        this.startDate = startDate;
     }
 
     public int getUserId() {
@@ -43,13 +39,5 @@ public class UserTaskEntity {
 
     public void setTaskId(int taskId) {
         this.taskId = taskId;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
     }
 }

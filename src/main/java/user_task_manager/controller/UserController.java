@@ -8,6 +8,7 @@ import user_task_manager.data.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -45,6 +46,8 @@ public class UserController {
     public UserEntity assignTaskToUser(@PathVariable("id") int userId, @PathVariable("taskId") int taskId){
         UserEntity user =  userRepository.findById(userId).orElse(null);
         TaskEntity task = taskRepository.findById(taskId).orElse(null);
+
+        task.setStartDate(LocalDate.now());
 
         user.getTasks().add(task);
         return userRepository.save(user);
