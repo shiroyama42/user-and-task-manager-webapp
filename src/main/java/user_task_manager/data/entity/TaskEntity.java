@@ -1,8 +1,11 @@
 package user_task_manager.data.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "task")
@@ -18,6 +21,10 @@ public class TaskEntity {
 
     @Column(name = "end_date")
     private Date endDate;
+
+    @ManyToMany(mappedBy = "tasks")
+    @JsonIgnore
+    private List<UserEntity> users = new ArrayList<>();
 
     public TaskEntity() {
     }
@@ -50,5 +57,13 @@ public class TaskEntity {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public List<UserEntity> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserEntity> users) {
+        this.users = users;
     }
 }

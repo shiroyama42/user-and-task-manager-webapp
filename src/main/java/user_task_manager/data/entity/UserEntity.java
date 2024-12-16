@@ -40,6 +40,13 @@ public class UserEntity implements UserDetails {
     @JoinColumn(name = "dep_id", referencedColumnName = "id")
     private DepartmentEntity department;
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_task",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "task_id"))
+    private List<TaskEntity> tasks = new ArrayList<>();
+
 
     @Transient
     public Collection<GrantedAuthority> authorities = new ArrayList<>();
@@ -114,6 +121,25 @@ public class UserEntity implements UserDetails {
 
     public void setDepartment(DepartmentEntity department) {
         this.department = department;
+    }
+
+    public List<TaskEntity> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<TaskEntity> tasks) {
+        this.tasks = tasks;
+    }
+
+    public void addTask(TaskEntity task){
+        this.tasks.add(task);
+        task.getUsers().add(this);
+    }
+
+    public void removeTask(TaskEntity task){
+        this.tasks.remove(task);
+        task.getUsers().remove(this);
+
     }
 
     @Override
