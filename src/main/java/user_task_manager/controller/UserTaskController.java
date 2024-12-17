@@ -21,14 +21,4 @@ public class UserTaskController {
         return userTaskRepository.findAll();
     }
 
-    @PostMapping("")
-    public UserTaskEntity saveUserTask(@RequestBody UserTaskEntity user){
-        return userTaskRepository.save(user);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable("id") int id){
-        userTaskRepository.deleteById(id);
-    }
-
 }

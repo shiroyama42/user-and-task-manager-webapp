@@ -1,11 +1,13 @@
 package user_task_manager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.web.bind.annotation.*;
 import user_task_manager.data.entity.TaskEntity;
 import user_task_manager.data.entity.UserEntity;
 import user_task_manager.data.repository.TaskRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -28,6 +30,7 @@ public class TaskController {
 
     @PostMapping("")
     public TaskEntity saveTask(@RequestBody TaskEntity task){
+        task.setStartDate(LocalDate.now());
         return taskRepository.save(task);
     }
 
