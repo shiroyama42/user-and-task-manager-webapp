@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -48,6 +49,8 @@ public class UserController {
         TaskEntity task = taskRepository.findById(taskId).orElse(null);
 
         task.setStartDate(LocalDate.now());
+        task.setCompletion(false);
+        task.setCompletionDate(new Date(1999, 01, 01));
 
         user.getTasks().add(task);
         return userRepository.save(user);

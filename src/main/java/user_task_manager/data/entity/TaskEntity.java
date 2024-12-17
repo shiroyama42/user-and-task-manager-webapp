@@ -26,6 +26,12 @@ public class TaskEntity {
     @Column(name = "end_date")
     private Date endDate;
 
+    @Column(name = "completed")
+    private boolean completed = false ;
+
+    @Column(name = "completion_date")
+    private Date completionDate;
+
     @ManyToMany(mappedBy = "tasks")
     @JsonIgnore
     private List<UserEntity> users = new ArrayList<>();
@@ -33,11 +39,13 @@ public class TaskEntity {
     public TaskEntity() {
     }
 
-    public TaskEntity(Date endDate, String task, int id, LocalDate startDate) {
+    public TaskEntity(Date endDate, String task, int id, LocalDate startDate, boolean completed, Date completionDate) {
         this.endDate = endDate;
         this.task = task;
         this.id = id;
         this.startDate = LocalDate.now();
+        this.completed = false;
+        this.completionDate = completionDate;
     }
 
     public int getId() {
@@ -70,6 +78,27 @@ public class TaskEntity {
 
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
+    }
+
+    public boolean isCompletion() {
+        return completed;
+    }
+
+    public void setCompletion(boolean completed) {
+        this.completed = completed;
+        if(completed){
+            this.completionDate = new Date();
+        }else{
+            this.completionDate = null;
+        }
+    }
+
+    public Date getCompletionDate() {
+        return completionDate;
+    }
+
+    public void setCompletionDate(Date completionDate) {
+        this.completionDate = completionDate;
     }
 
     public List<UserEntity> getUsers() {
