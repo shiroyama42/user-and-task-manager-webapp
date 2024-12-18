@@ -26,7 +26,7 @@ public class TaskService {
         taskDTO.setTask(taskEntity.getTask());
         taskDTO.setStartDate(taskEntity.getStartDate());
         taskDTO.setEndDate(taskEntity.getEndDate());
-        taskDTO.setCompleted(taskEntity.isCompletion());
+        taskDTO.setCompleted(taskEntity.isCompleted());
         taskDTO.setCompletionTime(taskEntity.getCompletionDate());
 
         List<UserDTO> userDTOs = taskEntity.getUsers().stream()

@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/company/users")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     @Autowired
@@ -43,14 +44,14 @@ public class UserController {
         return userRepository.save(user);
     }
 
+
     @PostMapping("/{id}/tasks/{taskId}")
     public UserEntity assignTaskToUser(@PathVariable("id") int userId, @PathVariable("taskId") int taskId){
         UserEntity user =  userRepository.findById(userId).orElse(null);
         TaskEntity task = taskRepository.findById(taskId).orElse(null);
 
         task.setStartDate(LocalDate.now());
-        task.setCompletion(false);
-        task.setCompletionDate(new Date(1999, 01, 01));
+
 
         user.getTasks().add(task);
         return userRepository.save(user);

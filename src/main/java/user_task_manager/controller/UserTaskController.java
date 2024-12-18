@@ -21,4 +21,9 @@ public class UserTaskController {
         return userTaskRepository.findAll();
     }
 
+    @PostMapping("")
+    public UserTaskEntity addTaskToUser(@RequestBody UserTaskEntity userTask) {
+        return userTaskRepository.save(userTask);
+    }
+
 }

@@ -27,7 +27,7 @@ public class TaskEntity {
     private Date endDate;
 
     @Column(name = "completed")
-    private boolean completed = false ;
+    private boolean completed;
 
     @Column(name = "completion_date")
     private Date completionDate;
@@ -44,7 +44,7 @@ public class TaskEntity {
         this.task = task;
         this.id = id;
         this.startDate = LocalDate.now();
-        this.completed = false;
+        this.completed = completed;
         this.completionDate = completionDate;
     }
 
@@ -80,11 +80,11 @@ public class TaskEntity {
         this.startDate = startDate;
     }
 
-    public boolean isCompletion() {
+    public boolean isCompleted() {
         return completed;
     }
 
-    public void setCompletion(boolean completed) {
+    public void setCompleted(boolean completed) {
         this.completed = completed;
         if(completed){
             this.completionDate = new Date();

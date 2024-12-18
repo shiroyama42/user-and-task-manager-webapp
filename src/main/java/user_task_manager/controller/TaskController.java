@@ -38,6 +38,7 @@ public class TaskController {
     @PostMapping("")
     public TaskEntity saveTask(@RequestBody TaskEntity task){
         task.setStartDate(LocalDate.now());
+        task.setCompleted(false);
         return taskRepository.save(task);
     }
 
