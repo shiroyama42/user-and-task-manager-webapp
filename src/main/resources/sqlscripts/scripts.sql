@@ -11,7 +11,10 @@ CREATE TABLE department(
 CREATE TABLE task(
 	id INT NOT NULL auto_increment primary key,
     task VARCHAR(500),
-    end_date DATE
+    end_date DATE,
+    start_date DATE,
+    completed BOOLEAN,
+    completion_date DATE
 );
 
 CREATE TABLE users(
@@ -30,7 +33,6 @@ CREATE TABLE users(
 CREATE TABLE user_task(
 	user_id INT NOT NULL,
     task_id INT NOT NULL,
-    start_date DATE,
     primary key(user_id, task_id),
     constraint FK_usertask_user_id foreign key (user_id) references users(id),
     constraint FK_usertask_task_id foreign key (task_id) references task(id)
