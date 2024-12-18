@@ -35,6 +35,7 @@ public class SecurityConfig {
     @Autowired
     private CustomAccessDeniedHandler accessDeniedHandler;
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf(AbstractHttpConfigurer::disable)

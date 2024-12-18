@@ -1,6 +1,7 @@
 package user_task_manager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import user_task_manager.data.entity.UserEntity;
 import user_task_manager.data.entity.UserTaskEntity;
@@ -21,6 +22,7 @@ public class UserTaskController {
         return userTaskRepository.findAll();
     }
 
+    @PreAuthorize("hasAuthority('Admin')")
     @PostMapping("")
     public UserTaskEntity addTaskToUser(@RequestBody UserTaskEntity userTask) {
         return userTaskRepository.save(userTask);
